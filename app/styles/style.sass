@@ -1,0 +1,142 @@
+=cursor-on-hover
+  cursor: pointer
+  color: darkgray
+
+=display-flex-row
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+  justify-content: space-around
+  align-items: center
+
+.br-top-0
+  border-top-left-radius: 0
+  border-top-right-radius: 0
+
+.br-bottom-4
+  border-bottom-left-radius: 4px
+  border-bottom-right-radius: 4px
+
+.br-0
+  border-radius: 0
+
+.mb-bottom-10
+  margin-bottom: 10px
+
+.mb-bottom-5
+  margin-bottom: 5px
+
+.mb-bottom-0
+  margin-bottom: 0
+
+.mb-top-5
+  margin-top: 5px
+
+.mb-right-10
+  margin-right: 10px
+
+.mb-right-10
+  margin-right: 10px
+
+.mb-top-10
+  margin-top: 10px
+
+.padding-right-10
+  padding-right: 10px
+
+.padding-0
+  padding: 0
+
+.padding-bottom-10
+  padding-bottom: 10px
+
+.padding-bottom-60
+  padding-bottom: 60px
+
+.padding-15
+  padding: 15px 15px 15px 15px
+
+.edit-form
+  margin: 10px 20px 10px 20px
+
+.left-control-items
+  +display-flex-row
+  padding-right: 0
+
+.prioritizing
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  visibility: hidden
+
+.control-item
+  color: dimgray
+
+.control-item:hover
+  +cursor-on-hover
+
+.control-items
+  +display-flex-row
+  visibility: hidden
+
+.panel-heading:hover .control-items
+  visibility: visible
+
+.panel-body:hover .prioritizing
+  visibility: visible
+
+.task-control-items
+  +display-flex-row
+  flex-wrap: nowrap
+  margin-right: 10px
+  visibility: hidden
+
+.panel-body:hover .task-control-items
+  visibility: visible
+
+.task
+  display: flex
+  align-items: center
+
+.completed
+  text-decoration: line-through
+  color: #888888
+
+.tasks-list
+  padding: 10px 0 15px 0
+  border: 1px solid #ddd
+  margin-bottom: -1px
+
+.collapse-tasks:hover
+  cursor: pointer
+
+.moment-picker
+  z-index: 2000 !important
+
+
+.file-uploader-icon
+  position: relative
+  float: right
+  right: 10px
+  bottom: 30px
+
+.ta-no-resize
+  resize: none
+
+.cursor-pointer
+  cursor: pointer
+
+.color-dark-red
+  color: darkred
+
+.color-green
+  color: green
+
+.color-gray
+  color: #888888
+
+.has-error
+  color: #D8000C
+
+.has-error .form-control
+  border-color: #D8000C

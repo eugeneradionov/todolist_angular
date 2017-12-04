@@ -1,0 +1,27 @@
+<div class="panel panel-default form-block" ng-if="!user.signedIn">
+    <div class="panel-heading">Sign Up</div>
+    <div class="panel-body">
+        <div class="form-group form-group-lg">
+            <form ng-class="{'has-error': signUpError}" ng-submit="submitRegistration(registrationForm)" role="form" ng-init="registrationForm={}" method="post">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="text" class="form-control" id="email" ng-model="registrationForm.email" placeholder="Email" required="required" autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" ng-model="registrationForm.password" placeholder="Password" required="required">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password confirmation</label>
+                    <input type="password" class="form-control" id="passwordConfirm" ng-model="registrationForm.password_confirmation" placeholder="Password" required="required">
+                </div>
+
+                <button type="submit" class="btn btn-success btn-lg">Sign up</button>
+            </form>
+
+            <p class="mb-top-10">Have an account? <a ui-sref="login">Sign In</a></p>
+        </div>
+    </div>
+</div>
