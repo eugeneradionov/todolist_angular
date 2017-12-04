@@ -14,8 +14,7 @@
     "moment": "^2.19.3",
     "ng-annotate-webpack-plugin": "^0.2.1-pre",
     "ng-file-upload": "^12.2.13",
-    "ng-token-auth": "0.0.30",
-    "webpack": "^3.9.1"
+    "ng-token-auth": "0.0.30"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.31",
