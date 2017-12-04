@@ -14,7 +14,8 @@
     "moment": "^2.19.3",
     "ng-annotate-webpack-plugin": "^0.2.1-pre",
     "ng-file-upload": "^12.2.13",
-    "ng-token-auth": "0.0.30"
+    "ng-token-auth": "0.0.30",
+    "webpack": "^3.9.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.31",
@@ -41,8 +42,8 @@
   },
   "scripts": {
     "build": "webpack --config webpack.production.config.js",
-    "start": "node node_modules/.bin/webpack-dev-server --content-base public",
-    "server": "http-server public/"
+    "start": "http-server public/",
+    "devServer": "node node_modules/.bin/webpack-dev-server --content-base public"
   },
   "keywords": [],
   "author": "",
