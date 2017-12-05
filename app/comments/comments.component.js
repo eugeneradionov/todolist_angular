@@ -27,7 +27,7 @@ let commentsController = ($scope, CommentsService, Upload, Flash, $window) => { 
     };
 
     $scope.closeModal = () => {
-        $scope.$parent.$parent.$parent.commentsModal[$scope.vm.task.id] = false;
+        $scope.$parent.commentsModal[$scope.vm.task.id] = false;
         $('#commentsModal').modal('hide');
     };
 

@@ -1,93 +1,92 @@
-<div ng-init="init()">
-    <div ng-repeat="task in tasks | orderBy: 'position'">
-        <div class="panel-body tasks-list">
-            <div class="row task">
-                <div class="col-xs-1 col-sm-1 col-md-1 left-control-items">
+<div ng-init="init()"></div>
+<div ng-repeat="task in tasks | orderBy: 'position'">
+    <div class="panel-body tasks-list">
+        <div class="row task">
+            <div class="col-xs-1 col-sm-1 col-md-1 left-control-items">
 
-                    <div class="prioritizing">
-                        <span ng-click="move(task, '1')" class="glyphicon glyphicon-arrow-up control-item mb-bottom-5"></span>
-                        <span ng-click="move(task, '-1')" class="glyphicon glyphicon-arrow-down control-item mb-top-5"></span>
-                    </div>
-
-                    <div class="task-checkbox">
-                        <input type="checkbox" ng-model="task.completed" ng-change="changeTaskCompleted(task)">
-                    </div>
+                <div class="prioritizing">
+                    <span ng-click="move(task, '1')" class="glyphicon glyphicon-arrow-up control-item mb-bottom-5"></span>
+                    <span ng-click="move(task, '-1')" class="glyphicon glyphicon-arrow-down control-item mb-top-5"></span>
                 </div>
 
-                <div class="col-xs-9 col-sm-9 col-md-9">
-                    <div ng-class="{completed: task.completed}" ng-show="editingTask !== task">{{task.name}}</div>
-                    <small ng-class="chooseDeadlineColor(task)">{{task.deadline | date:'dd/MM/yyyy HH:mm':'UTC'}}</small>
-
-                    <form class="edit-form" ng-show="editingTask === task" ng-submit="edit(task, editingTaskName)">
-                        <div class="form-group">
-                            <input class="form-control" type="text" ng-model="editingTaskName" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-warning">Save</button>
-                        <button type="button" class="btn btn-light" ng-click="cancelEditing()">Cancel</button>
-                    </form>
-                </div>
-
-                <div class="col-md-2 col-sm-2 col-xs-2 task-control-items">
-                    <span ng-show="task.comments_count>0">{{ task.comments_count }}</span>
-                    <span class="glyphicon glyphicon-comment control-item" ng-click="commentsModal[task.id] = true"></span>
-                    <span class="glyphicon glyphicon-time control-item" data-toggle="modal" data-target="#datePickModal" ng-click="openDeadlinePicker(task)"></span>
-                    <span class="glyphicon glyphicon-pencil control-item" ng-click="startEditing(task)"></span>
-                    <span class="glyphicon glyphicon-trash control-item" ng-click="delete(task)"></span>
+                <div class="task-checkbox">
+                    <input type="checkbox" ng-model="task.completed" ng-change="changeTaskCompleted(task)">
                 </div>
             </div>
+
+            <div class="col-xs-9 col-sm-9 col-md-9">
+                <div ng-class="{completed: task.completed}" ng-show="editingTask !== task">{{task.name}}</div>
+                <small ng-class="chooseDeadlineColor(task)">{{task.deadline | date:'dd/MM/yyyy HH:mm':'UTC'}}</small>
+
+                <form class="edit-form" ng-show="editingTask === task" ng-submit="edit(task, editingTaskName)">
+                    <div class="form-group">
+                        <input class="form-control" type="text" ng-model="editingTaskName" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-warning">Save</button>
+                    <button type="button" class="btn btn-light" ng-click="cancelEditing()">Cancel</button>
+                </form>
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-2 task-control-items">
+                <span ng-show="task.comments_count>0">{{ task.comments_count }}</span>
+                <span class="glyphicon glyphicon-comment control-item" ng-click="commentsModal[task.id] = true"></span>
+                <span class="glyphicon glyphicon-time control-item" data-toggle="modal" data-target="#datePickModal" ng-click="openDeadlinePicker(task)"></span>
+                <span class="glyphicon glyphicon-pencil control-item" ng-click="startEditing(task)"></span>
+                <span class="glyphicon glyphicon-trash control-item" ng-click="delete(task)"></span>
+            </div>
         </div>
-        <comments-list task="task" comments-modal="commentsModal" ng-if="commentsModal[task.id] === true"></comments-list>
+    </div>
+    <comments-list task="task" comments-modal="commentsModal" ng-if="commentsModal[task.id] === true"></comments-list>
+</div>
+
+<!--NEW TASK-->
+
+<form class="panel-body padding-0" ng-submit="create(taskName)">
+    <div>
+        <input ng-model="taskName" ng-focus="showButtons=true" id="newTask"
+               type="text" class="form-control mb-bottom-0 br-top-0 br-bottom-4" placeholder="Enter Task Name...">
     </div>
 
-    <!--NEW TASK-->
+    <div class="padding-15" ng-show="showButtons">
+        <button type="submit" class="btn btn-lg btn-success mb-right-10">Add task</button>
+        <button type="button" ng-click="showButtons=false; taskName=''" class="btn btn-lg btn-default">Cancel</button>
+    </div>
+</form>
 
-    <form class="panel-body padding-0" ng-submit="create(taskName)">
-        <div>
-            <input ng-model="taskName" ng-focus="showButtons=true" id="newTask"
-                   type="text" class="form-control mb-bottom-0 br-top-0 br-bottom-4" placeholder="Enter Task Name...">
-        </div>
+<!--DATEPICKER-->
 
-        <div class="padding-15" ng-show="showButtons">
-            <button type="submit" class="btn btn-lg btn-success mb-right-10">Add task</button>
-            <button type="button" ng-click="showButtons=false; taskName=''" class="btn btn-lg btn-default">Cancel</button>
-        </div>
-    </form>
+<div id="datePickModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
 
-    <!--DATEPICKER-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Choose Deadline</h4>
+            </div>
 
-    <div id="datePickModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
 
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Choose Deadline</h4>
+                    <div class="col-lg-6 col-md-6">
+                        <label for="date-picker">Date</label>
+                        <input class="form-control" id="date-picker" ng-model="datepickerData"
+                               ng-model-options="{ updateOn: 'blur' }" moment-picker="$root.actual_date"
+                               min-date="minDate" start-view="month" max-view="month"
+                               today="true" format="DD/MM/YYYY" validate="true">
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <label for="time-picker">Time</label>
+                        <input id="time-picker" class="form-control" ng-model="datepickerTime"
+                               ng-model-options="{ updateOn: 'blur' }" moment-picker="$root.actual_time"
+                               start-view="day" max-view="day" min-date="minDate" format="HH:mm">
+                    </div>
                 </div>
 
-                <div class="modal-body">
-                    <div class="row">
-
-                        <div class="col-lg-6 col-md-6">
-                            <label for="date-picker">Date</label>
-                            <input class="form-control" id="date-picker" ng-model="datepickerData"
-                                   ng-model-options="{ updateOn: 'blur' }" moment-picker="$root.actual_date"
-                                   min-date="minDate" start-view="month" max-view="month"
-                                   today="true" format="DD/MM/YYYY" validate="true">
-                        </div>
-
-                        <div class="col-lg-6 col-md-6">
-                            <label for="time-picker">Time</label>
-                            <input id="time-picker" class="form-control" ng-model="datepickerTime"
-                                   ng-model-options="{ updateOn: 'blur' }" moment-picker="$root.actual_time"
-                                   start-view="day" max-view="day" min-date="minDate" format="HH:mm">
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button ng-click="saveDeadline(datepickerData, datepickerTime)" type="button" class="btn btn-lg btn-success" data-dismiss="modal">Save</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="saveDeadline(null, null)">Reset</button>
-                    </div>
+                <div class="modal-footer">
+                    <button ng-click="saveDeadline(datepickerData, datepickerTime)" type="button" class="btn btn-lg btn-success" data-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="saveDeadline(null, null)">Reset</button>
                 </div>
             </div>
         </div>

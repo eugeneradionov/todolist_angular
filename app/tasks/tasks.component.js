@@ -27,6 +27,9 @@ let tasksController = ($rootScope, $scope, $window, TasksService, Flash) => { 'n
     };
 
     $scope.saveDeadline = (date, time) => {
+        let oldTaskScope = $scope;
+        $scope = $rootScope.currentTaskScope;
+
         let datetime = null;
 
         if (date && time) {
@@ -38,9 +41,11 @@ let tasksController = ($rootScope, $scope, $window, TasksService, Flash) => { 'n
         TasksService.updateTask($rootScope.currentTask.project_id, params).then(
             (response) => {
                 $scope.tasks = response.data;
+                $scope = oldTaskScope;
             },
             (errors) => {
                 onErrors(errors.data);
+                $scope = oldTaskScope;
             }
         );
     };
@@ -48,8 +53,8 @@ let tasksController = ($rootScope, $scope, $window, TasksService, Flash) => { 'n
     $scope.minDate = moment().format('DD/MM/YYYY');
 
     $scope.openDeadlinePicker = (task) => {
-
         $rootScope.currentTask = task;
+        $rootScope.currentTaskScope = $scope;
         if (task.deadline) {
             $rootScope.actual_date = moment().utc(task.deadline).format('DD/MM/YYYY');
             $rootScope.actual_time = moment().utc(task.deadline).format('HH:mm');
