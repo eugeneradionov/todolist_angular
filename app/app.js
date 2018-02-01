@@ -23,17 +23,17 @@ import comments from './comments';
 import auth from './authentication';
 
 angular.module('app', [
-    uirouter,
-    ipCookie,
-    cookies,
-    ngTokenAuth,
-    ngFlash,
-    fileUpload,
-    'moment-picker',
-    projects,
-    tasks,
-    comments,
-    auth,
+  uirouter,
+  ipCookie,
+  cookies,
+  ngTokenAuth,
+  ngFlash,
+  fileUpload,
+  'moment-picker',
+  projects,
+  tasks,
+  comments,
+  auth,
 ])
-    .config(routes)
-    .config(authConfig);
+  .config(routes)
+  .config(authConfig);

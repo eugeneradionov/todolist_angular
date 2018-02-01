@@ -1,50 +1,50 @@
 <div class="" ng-init="init()">
-    <div ng-repeat="project in projects">
-        <div class="panel panel-default mb-bottom-10">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="collapse-tasks" ng-click="collapseTasks(project)">
+  <div ng-repeat="project in projects">
+    <div class="panel panel-default mb-bottom-10">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="collapse-tasks" ng-click="collapseTasks(project)">
 
-                        <div class="col-xs-1 col-sm-1 col-md-1">
-                            <span class="glyphicon glyphicon-chevron-right" ng-show="!project.showTasks"></span>
-                            <span class="glyphicon glyphicon-chevron-down" ng-show="project.showTasks"></span>
-                        </div>
-
-                        <div class="col-xs-10 col-sm-10 col-md-10">
-                            <strong>{{project.name}}</strong>
-                        </div>
-                    </div>
-
-                    <div class="col-xs-1 col-sm-1 col-md-1">
-                        <div class="control-items">
-                            <span class="glyphicon glyphicon-pencil mb-right-10 control-item" ng-click="startEditing(project)"></span>
-                            <span class="glyphicon glyphicon-trash mb-right-10 control-item" ng-click="delete(project)"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <form class="edit-form" ng-show="editingProject === project" ng-submit="edit(project, editingProjectName)">
-                    <div class="form-group">
-                        <input type="text" class="form-control" ng-model="editingProjectName">
-                    </div>
-
-                    <button type="submit" class="btn btn-warning">Save</button>
-                    <button type="button" class="btn btn-light" ng-click="cancelEditing()">Cancel</button>
-                </form>
+            <div class="col-xs-1 col-sm-1 col-md-1">
+              <span class="glyphicon glyphicon-chevron-right" ng-show="!project.showTasks"></span>
+              <span class="glyphicon glyphicon-chevron-down" ng-show="project.showTasks"></span>
             </div>
-            <tasks-list ng-if="project.showTasks"></tasks-list>
+
+            <div class="col-xs-10 col-sm-10 col-md-10">
+              <strong>{{project.name}}</strong>
+            </div>
+          </div>
+
+          <div class="col-xs-1 col-sm-1 col-md-1">
+            <div class="control-items">
+              <span class="glyphicon glyphicon-pencil mb-right-10 control-item" ng-click="startEditing(project)"></span>
+              <span class="glyphicon glyphicon-trash mb-right-10 control-item" ng-click="delete(project)"></span>
+            </div>
+          </div>
         </div>
+
+        <form class="edit-form" ng-show="editingProject === project" ng-submit="edit(project, editingProjectName)">
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="editingProjectName">
+          </div>
+
+          <button type="submit" class="btn btn-warning">Save</button>
+          <button type="button" class="btn btn-light" ng-click="cancelEditing()">Cancel</button>
+        </form>
+      </div>
+      <tasks-list ng-if="project.showTasks"></tasks-list>
     </div>
+  </div>
 </div>
 
 <form ng-submit="create(projectName)">
-    <div class="form-group">
-        <input ng-model="projectName" ng-focus="showButtons=true" id="newProject"
-               type="text" class="form-control" placeholder="Enter Project Name...">
-    </div>
+  <div class="form-group">
+    <input ng-model="projectName" ng-focus="showButtons=true" id="newProject"
+           type="text" class="form-control" placeholder="Enter Project Name...">
+  </div>
 
-    <div ng-show="showButtons">
-        <button type="submit" class="btn btn-lg btn-success mb-right-10">Create Project</button>
-        <button type="button" ng-click="showButtons=false; projectName=''" class="btn btn-lg btn-default">Cancel</button>
-    </div>
+  <div ng-show="showButtons">
+    <button type="submit" class="btn btn-lg btn-success mb-right-10">Create Project</button>
+    <button type="button" ng-click="showButtons=false; projectName=''" class="btn btn-lg btn-default">Cancel</button>
+  </div>
 </form>

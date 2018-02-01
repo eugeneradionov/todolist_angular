@@ -1,16 +1,16 @@
 export default ($authProvider, $qProvider) => {
-    $qProvider.errorOnUnhandledRejections(false);
+  $qProvider.errorOnUnhandledRejections(false);
 
-    $authProvider.configure({
-        apiUrl: `${process.env.API_URL}`,
-        storage: 'coookies',
-        validateOnPageLoad: true,
-        tokenFormat: {
-            'access-token': '{{ token }}',
-            'token-type': 'Bearer',
-            'client': '{{ clientId }}',
-            'expiry': '{{ expiry }}',
-            'uid': '{{ uid }}',
-        },
-    });
+  $authProvider.configure({
+    apiUrl: `${process.env.API_URL}`,
+    storage: 'coookies',
+    validateOnPageLoad: true,
+    tokenFormat: {
+      'access-token': '{{ token }}',
+      'token-type': 'Bearer',
+      'client': '{{ clientId }}',
+      'expiry': '{{ expiry }}',
+      'uid': '{{ uid }}',
+    },
+  });
 };

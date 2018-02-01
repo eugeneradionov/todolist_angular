@@ -1,73 +1,73 @@
 <div ng-init="init()" class="modal" id="commentsModal" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
 
-            <div class="modal-header">
-                <button type="button" class="close" ng-click="closeModal()">&times;</button>
-                <h3 class="modal-title">Add Comment</h3>
-            </div>
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="closeModal()">&times;</button>
+        <h3 class="modal-title">Add Comment</h3>
+      </div>
 
-            <div class="modal-body">
-                <div class="form-group">
+      <div class="modal-body">
+        <div class="form-group">
                     <textarea ng-model="newComment.body" class="form-control ta-no-resize"
                               rows="5" name="body" minlength="10" maxlength="256"
                               placeholder=" Enter Your Comment...">
                     </textarea>
-                    <div class="file-uploader-icon">
-                        <label for="uploadImage">
-                            <i class="glyphicon glyphicon-paperclip control-item"></i>
-                        </label>
-                        <input id="uploadImage" ngf-select ng-model="newComment.file"
-                               name="file" type="file" ngf-max-size="10MB"
-                               accept="image/jpeg,image/jpg,image/png" class="ng-hide">
-                    </div>
-                </div>
-            </div>
+          <div class="file-uploader-icon">
+            <label for="uploadImage">
+              <i class="glyphicon glyphicon-paperclip control-item"></i>
+            </label>
+            <input id="uploadImage" ngf-select ng-model="newComment.file"
+                   name="file" type="file" ngf-max-size="10MB"
+                   accept="image/jpeg,image/jpg,image/png" class="ng-hide">
+          </div>
+        </div>
+      </div>
 
-            <div class="modal-footer">
-                <button class="btn btn-lg btn-info"
-                        ng-disabled="newComment.body.length < 10 || !newComment.body"
-                        ng-click="create(newComment)"> Save
-                </button>
-                <button class="btn btn-lg" ng-click="closeModal()"> Cancel </button>
-            </div>
+      <div class="modal-footer">
+        <button class="btn btn-lg btn-info"
+                ng-disabled="newComment.body.length < 10 || !newComment.body"
+                ng-click="create(newComment)"> Save
+        </button>
+        <button class="btn btn-lg" ng-click="closeModal()"> Cancel </button>
+      </div>
 
-            <div class="modal-footer">
-                <div ng-show="attachmentErrors" class="color-dark-red">
-                    <ul>
-                        <li>Wrong file format. Acceptable file formats are: *.jpeg *.jpg *.png</li>
-                        <li>Uploaded file is too large. Size must be less than 10 MB</li>
-                    </ul>
-                </div>
+      <div class="modal-footer">
+        <div ng-show="attachmentErrors" class="color-dark-red">
+          <ul>
+            <li>Wrong file format. Acceptable file formats are: *.jpeg *.jpg *.png</li>
+            <li>Uploaded file is too large. Size must be less than 10 MB</li>
+          </ul>
+        </div>
 
-                <div class="media-left padding-bottom-10" ng-if="newComment.file">
-                    <h5>Image Preview</h5>
-                    <div class="media-left">
+        <div class="media-left padding-bottom-10" ng-if="newComment.file">
+          <h5>Image Preview</h5>
+          <div class="media-left">
                         <span class="glyphicon glyphicon-trash control-item"
                               ng-click="newComment.file=null">
                         </span>
-                    </div>
+          </div>
 
-                    <div ng-show="newComment.file" class="image-preview">
-                        <img ngf-thumbnail="newComment.file" class="thumb img-rounded" width="250" height="250">
-                    </div>
-                </div>
-
-                <div ng-repeat="comment in comments">
-                    <div class="media-left padding-bottom-10">
-                        <small class="pull-left">{{comment.created_at | date:'dd/MM/yyyy':'UTC'}}</small>
-                        <span class="pull-left control-item glyphicon glyphicon-trash" ng-click="delete(comment)"></span>
-
-                        <div>{{comment.body}}</div>
-
-                        <div>
-                            <a role="link" ng-click="popUp(comment.attachment.url, '_blank')">
-                                <img class="cursor-pointer" ng-src="{{comment.attachment.thumb.url}}">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <div ng-show="newComment.file" class="image-preview">
+            <img ngf-thumbnail="newComment.file" class="thumb img-rounded" width="250" height="250">
+          </div>
         </div>
+
+        <div ng-repeat="comment in comments">
+          <div class="media-left padding-bottom-10">
+            <small class="pull-left">{{comment.created_at | date:'dd/MM/yyyy':'UTC'}}</small>
+            <span class="pull-left control-item glyphicon glyphicon-trash" ng-click="delete(comment)"></span>
+
+            <div>{{comment.body}}</div>
+
+            <div>
+              <a role="link" ng-click="popUp(comment.attachment.url, '_blank')">
+                <img class="cursor-pointer" ng-src="{{comment.attachment.thumb.url}}">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

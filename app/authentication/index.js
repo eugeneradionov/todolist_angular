@@ -8,8 +8,8 @@ import registrationRoutes from './registration/registration.routes';
 import registrationController from './registration/registration.controller';
 
 export default angular.module('app.authentication', [uirouter])
-    .controller(LoginController)
-    .controller(registrationController)
-    .config(loginRoutes)
-    .config(registrationRoutes)
-    .name;
+  .controller(LoginController)
+  .controller(registrationController)
+  .config(loginRoutes)
+  .config(registrationRoutes)
+  .name;

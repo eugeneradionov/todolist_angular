@@ -1,19 +1,19 @@
 <div class="panel panel-default form-block" ng-if="!user.signedIn">
-    <div class="panel-heading">Sign In</div>
-    <div class="panel-body">
-        <div class="form-group form-group-lg">
-            <form ng-class="{'has-error': loginError}" ng-submit="submitLogin(loginForm)" role="form" ng-init="loginForm = {}">
-                <br>
-                <span ng-show="loginError" class="has-error">Invalid email or password</span>
-                <div class="form-group">
-                    <input type="email" class="form-control" id="email" ng-model="loginForm.email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" id="password" ng-model="loginForm.password" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-info btn-lg">Sign In</button>
-            </form>
-            <p class="mb-top-10">Don't have an account? <a ui-sref="sign_up">Sign Up</a></p>
+  <div class="panel-heading">Sign In</div>
+  <div class="panel-body">
+    <div class="form-group form-group-lg">
+      <form ng-class="{'has-error': loginError}" ng-submit="submitLogin(loginForm)" role="form" ng-init="loginForm = {}">
+        <br>
+        <span ng-show="loginError" class="has-error">Invalid email or password</span>
+        <div class="form-group">
+          <input type="email" class="form-control" id="email" ng-model="loginForm.email" placeholder="Email">
         </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="password" ng-model="loginForm.password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-info btn-lg">Sign In</button>
+      </form>
+      <p class="mb-top-10">Don't have an account? <a ui-sref="sign_up">Sign Up</a></p>
     </div>
+  </div>
 </div>

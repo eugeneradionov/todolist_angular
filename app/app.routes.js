@@ -1,3 +1,3 @@
 export default ($urlRouterProvider) => {
-    $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/');
 };
