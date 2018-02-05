@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDOList</title>
+    <link href="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="styles/styles.css">
+</head>
+<body ng-app="app">
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <strong class="navbar-brand">Simple ToDo List</strong>
+        </div>
+
+        <div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#!/login" ng-click="signOut()" ng-if="user.signedIn"><span class="glyphicon glyphicon-log-out control-item"></span></a></li>
+                <li><a href="#!/login" ng-if="!user.signedIn"><span class="glyphicon glyphicon-log-in control-item"></span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="app">
+    <div class="container padding-bottom-60">
+        <flash-message duration="10000" show-close="true"></flash-message>
+        <ui-view></ui-view>
+    </div>
+</div>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="js/app.js"></script>
+<script src="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.js"></script>
+</body>
+</html>
